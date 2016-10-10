@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/" />
+    <title>CSV Search App</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css" />
+    <script src="/angular/angular.js"></script>
+    <script src="/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/main.js"></script>
+</head>
+<body ng-app="FullstackGeneratedApp">
+    <div ng-controller="itemsCtrl">
+        <input class="container form-control" id="filterBar" placeholder="Search by name or category" ng-model="searchText"/>
+        
+        <div>
+            <table>
+                <tr>
+                <th ng-click="sortProperty('system_id')"> System ID </th>
+                <th ng-click="sortProperty('upc')"> UPC </th>
+                <th ng-click="sortProperty('name')"> Name </th>
+                <th ng-click="sortProperty('qty')"> Qty </th>
+                <th ng-click="sortProperty('price')"> Price ($) </th>
+                <th ng-click="sortProperty('category')"> Category </th>
+                </tr>
+                <tr ng-repeat="x in items | filter: searchText | orderBy: orderProperty">
+                <td> {{ x.system_id }} </td>
+                <td> {{ x.upc }} </td>
+                <td> {{ x.name }} </td>
+                <td> {{ x.qty }} </td>
+                <td> {{ x.price }} </td>
+                <td> {{ x.category }} </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+<style>
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+
+</html>
